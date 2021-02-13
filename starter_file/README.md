@@ -24,18 +24,18 @@ People with cardiovascular disease or who are at high cardiovascular risk (due t
 
 In this project a classification model will be built both with Automated Machine Learning and a Hyperdrive model with tuned hyperparameters to determine the best model for prediction of death events based on 12 features:
 
-age: age of the patient (years)
-anaemia: decrease of red blood cells or hemoglobin (boolean)
-high blood pressure: if the patient has hypertension (boolean)
-creatinine phosphokinase (CPK): level of the CPK enzyme in the blood (mcg/L)
-diabetes: if the patient has diabetes (boolean)
-ejection fraction: percentage of blood leaving the heart at each contraction (percentage)
-platelets: platelets in the blood (kiloplatelets/mL)
-sex: woman or man (binary)
-serum creatinine: level of serum creatinine in the blood (mg/dL)
-serum sodium: level of serum sodium in the blood (mEq/L)
-smoking: if the patient smokes or not (boolean)
-time: follow-up period (days)
+-age: age of the patient (years)
+-anaemia: decrease of red blood cells or hemoglobin (boolean)
+-high blood pressure: if the patient has hypertension (boolean)
+-creatinine phosphokinase (CPK): level of the CPK enzyme in the blood (mcg/L)
+-diabetes: if the patient has diabetes (boolean)
+-ejection fraction: percentage of blood leaving the heart at each contraction (percentage)
+-platelets: platelets in the blood (kiloplatelets/mL)
+-sex: woman or man (binary)
+-serum creatinine: level of serum creatinine in the blood (mg/dL)
+-serum sodium: level of serum sodium in the blood (mEq/L)
+-smoking: if the patient smokes or not (boolean)
+-time: follow-up period (days)
 
 ### Access
 
@@ -62,14 +62,19 @@ The main goal of classification models is to predict which categories new data w
 
 ### Results
 
-The results I got with your automated ML model is the VotingEnsemble with Accuracy of ~0.885946. What were the parameters of the model? How could you have improved it?
+The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946. What were the parameters of the model? How could you have improved it? To improve the model we can use different target metric like AUC_weighted.
 
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
 
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_1.jpg)
+
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_2.jpg)
 
 ## Hyperparameter Tuning
 
 The model for this experiment is Liner Regression, trains easy, fast and is easy to understand.Parameters used for hyperparameter tuning are:Regularization Strength (C) with range 0.0 to 1.0 -- Inverse of regularization strength. Smaller values cause stronger regularization​ and Max Iterations (max_iter) with values 50, 100, 150, 200 and 250 -- Maximum number of iterations to converge.
 
+```
 early_termination_policy = BanditPolicy(evaluation_interval=2, slack_factor=0.1)
 
 if "training" not in os.listdir():
@@ -96,18 +101,23 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
                                      primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
                                      max_total_runs=20,
                                      max_concurrent_runs=4)
+```
 
 Hyperparameter tuning is the process of finding the configuration of hyperparameters that results in the best performance. Random sampling supports early termination of low-performance runs. The early termination policy uses the primary metric to identify low-performance runs. BanditPolicy terminates runs where the primary metric is not within the specified slack factor/slack amount compared to the best performing run.
 
 ### Results
 
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The results I got with this hyperdrive model is an accuracy of ~0.7833. The parameters of the model are Regularization Strenght and Max Iterations. The results of the parameters were Regularization Strenght ~0.74, Max Iterations = 150. To improved it we can also try increasing the range of the hyperparameters and with imbalanced data  we can do better pre-processing of the data or get more data to balance it.
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_RunDetails_Widget.jpg)
+
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_1.jpg)
+
+(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_2.jpg)
 
 ## Model Deployment
 
-The AutoMl model is deployed using Azure Container Instance as a WebService. Best run environment and score.py file is provided to the InferenceConfig. Cpu_cores and memory_gb are initialized as 1 for the deployment configuration. The aci service is then created using workspace, aci service name, model, inference config and deployment configuration.
+The AutoMl model is deployed using Azure Container Instance as a WebService. Best run environment and score.py file is provided to the InferenceConfig. The aci service is then created using workspace, aci service name, model, inference config and deployment configuration.
 The model is successfully deployed as a web service and a REST endpoint is created with status Healthy. A scoring uri is also generated to test the endpoint.
 The endpoint is tested by using an endpoint.py file which passes 2 data points as json
 
