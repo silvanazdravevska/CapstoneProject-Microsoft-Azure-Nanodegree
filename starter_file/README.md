@@ -3,10 +3,6 @@
 
 In this Project 2 models are created, one using Automated ML ant the other using Hyperdrive. The dataset used is the Hearth Failure Prediction dataset from Kaggle in order to built a classification model.Then the model with the best accuracy will be deployed as a Web service.
 
-## Project Set Up and Installation
-
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
-
 ## Dataset
 
 ### Overview
@@ -64,11 +60,11 @@ The main goal of classification models is to predict which categories new data w
 
 The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946. What were the parameters of the model? How could you have improved it? To improve the model we can use different target metric like AUC_weighted.
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_1.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_1.jpg)
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_2.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_2.jpg)
 
 ## Hyperparameter Tuning
 
@@ -109,11 +105,11 @@ Hyperparameter tuning is the process of finding the configuration of hyperparame
 
 The results I got with this hyperdrive model is an accuracy of ~0.7833. The parameters of the model are Regularization Strenght and Max Iterations. The results of the parameters were Regularization Strenght ~0.74, Max Iterations = 150. To improved it we can also try increasing the range of the hyperparameters and with imbalanced data  we can do better pre-processing of the data or get more data to balance it.
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_RunDetails_Widget.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_RunDetails_Widget.jpg)
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_1.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_1.jpg)
 
-(https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_2.jpg)
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_2.jpg)
 
 ## Model Deployment
 
