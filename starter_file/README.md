@@ -128,6 +128,10 @@ The AutoMl model is deployed using Azure Container Instance as a WebService. Bes
 The model is successfully deployed as a web service and a REST endpoint is created with status Healthy. A scoring uri is also generated to test the endpoint.
 The endpoint is tested by using an endpoint.py file which passes 2 data points as json
 
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model%20Deployment_1.jpg)
+
+![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model-Deployment_2.jpg)
+
 ## Screen Recording
 
 A [link](https://drive.google.com/file/d/1Zv3IOT9VT0iXe_sVxZE3LYurxfddZLuA/view?usp=sharing) to a screen recording of the project in action. 
