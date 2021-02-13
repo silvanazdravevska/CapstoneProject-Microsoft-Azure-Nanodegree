@@ -44,7 +44,7 @@ The Heart Failure Dataset is downloaded from Kaggle as a csv file, and after it 
 ## Automated ML
 
 The `automl` settings and configuration used for this experiment are as follows:
-
+```
 automl_settings = {"experiment_timeout_minutes": 30,
     "max_concurrent_iterations": 3,
     "primary_metric" : 'accuracy',
@@ -57,14 +57,14 @@ automl_config = AutoMLConfig(compute_target=compute_target,
                              enable_early_stopping= True,
                              featurization= 'auto',
                              **automl_settings)
-                             
+```                             
 The main goal of classification models is to predict which categories new data will fall into based on learnings from its training data. AutoML typically performs cross validation, data balance check, cardinality check in prior to machine learning process with a variety of algorithms.
 
 ### Results
 
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The results I got with your automated ML model is the VotingEnsemble with Accuracy of ~0.885946. What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+
 
 ## Hyperparameter Tuning
 
@@ -113,7 +113,4 @@ The endpoint is tested by using an endpoint.py file which passes 2 data points a
 
 ## Screen Recording
 
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
+A [link](https://drive.google.com/file/d/1Zv3IOT9VT0iXe_sVxZE3LYurxfddZLuA/view?usp=sharing) to a screen recording of the project in action. 
