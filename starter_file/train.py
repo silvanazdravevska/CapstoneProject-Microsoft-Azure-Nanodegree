@@ -18,7 +18,7 @@ description_text = "Heart Failure Dataset for Prediction of Death Events"
 if key in ws.datasets.keys(): 
         found = True
         dataset = ws.datasets[key] 
-        
+
 # Split data into train and test set
 
 def clean_data(data):
@@ -27,10 +27,10 @@ def clean_data(data):
     y_df = x_df.pop("DEATH_EVENT")
     return x_df, y_df
 
-x, y = clean_data(ds)
+X, y = clean_data(dataset)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
-    
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
 
 def main():
     # Add arguments to script
@@ -41,8 +41,8 @@ def main():
 
     args = parser.parse_args()
 
-    run.log("Regularization Strength:", np.float(args.C))
-    run.log("Max iterations:", np.int(args.max_iter))
+    run.log("Regularization Strength: ", np.float(args.C))
+    run.log("Max iterations: ", np.int(args.max_iter))
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
@@ -51,7 +51,7 @@ def main():
     
     os.makedirs('outputs', exist_ok=True)
     joblib.dump(model, 'outputs/model.joblib')
-    
+
 
 if __name__ == '__main__':
     main()
