@@ -75,7 +75,7 @@ The main goal of classification models is to predict which categories new data w
 
 The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946.Voting Ensemble technique predicts based on the weighted average of predicted class probabilities for classification tasks. `ensembled_iterations`: '[23, 17, 2, 29, 9, 5, 24, 26]', `ensembled_algorithms`: "[`LightGBM`, `ExtremeRandomTrees`, `RandomForest`, `LightGBM`, `RandomForest`, `LightGBM`, `LightGBM`, `RandomForest`]", `ensemble_weights`: '[0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.1]', `best_individual_pipeline_score`: '0.8733050847457627', `best_individual_iteration` '23'. To improve the model we can use different target metric like AUC_weighted.
 
-![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
+![AutoML RunDetails Widget](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_1.jpg)
 
