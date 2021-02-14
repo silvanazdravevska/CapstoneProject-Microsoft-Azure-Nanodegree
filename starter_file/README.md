@@ -1,7 +1,7 @@
 
 # Capstone Project - Azure Machine Learning Engineer
 
-In this Project 2 models are created, one using Automated ML ant the other using Hyperdrive. The dataset used is the Hearth Failure Prediction dataset from Kaggle in order to built a classification model.Then the model with the best accuracy will be deployed as a Web service.
+In this Project 2 models are created, one using Automated ML ant the other using Hyperdrive in Microsoft Azure Python SDK. The dataset used is the Hearth Failure Prediction dataset from Kaggle in order to built a classification model to predict mortality by heart failure.Then the model with the best accuracy will be deployed as a Web service.
 
 ## Dataset
 
@@ -44,11 +44,15 @@ In this project a classification model will be built both with Automated Machine
 
 -time: follow-up period (days)
 
+Both models will train the data and that is used to compare the performance of both the models, and deploy the model with the best accuracy and then test the model endpoint. Both models were trained in the Microsoft Azure Python SDK.
+
 ### Access
 
-The Heart Failure Dataset is downloaded from Kaggle as a csv file, and after it is registered as a Dataset in the Azure Workspace in a Tabular form, uploaded from local system. It can be then accessed as Dataset.get_by_name(ws, dataset_name).
+The Heart Failure Dataset is downloaded from Kaggle as a csv file on local computer, and after it is registered via ML Studio as a Dataset in the Azure Workspace in a Tabular form, uploaded as local file. It is then accessed with `Dataset.get_by_name(ws, dataset_name)` in the Python SDK.
 
 ## Automated ML
+
+The main goal of classification models is to predict which categories new data will fall into based on learnings from its training data.  The `primary metric` parameter determines the metric to be used during model training for optimization; if not specified, accuracy is used for classification tasks for Image classification, Sentiment analysis, Churn prediction. `enable_early_stopping` will flag to enable early termination if the score is not improving in the short term.
 
 The `automl` settings and configuration used for this experiment are as follows:
 ```
@@ -69,7 +73,7 @@ The main goal of classification models is to predict which categories new data w
 
 ### Results
 
-The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946. What were the parameters of the model? How could you have improved it? To improve the model we can use different target metric like AUC_weighted.
+The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946.Voting Ensemble technique predicts based on the weighted average of predicted class probabilities for classification tasks. `ensembled_iterations`: '[23, 17, 2, 29, 9, 5, 24, 26]', `ensembled_algorithms`: "[`LightGBM`, `ExtremeRandomTrees`, `RandomForest`, `LightGBM`, `RandomForest`, `LightGBM`, `LightGBM`, `RandomForest`]", `ensemble_weights`: '[0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.1]', `best_individual_pipeline_score`: '0.8733050847457627', `best_individual_iteration` '23'. To improve the model we can use different target metric like AUC_weighted.
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
 
@@ -79,7 +83,7 @@ The results I got with this automated ML model is the VotingEnsemble with Accura
 
 ## Hyperparameter Tuning
 
-The model for this experiment is Liner Regression, trains easy, fast and is easy to understand.Parameters used for hyperparameter tuning are:Regularization Strength (C) with range 0.0 to 1.0 -- Inverse of regularization strength. Smaller values cause stronger regularization​ and Max Iterations (max_iter) with values 50, 100, 150, 200 and 250 -- Maximum number of iterations to converge.
+The model for this experiment is Liner Regression, trains easy, fast and is easy to understand.Parameters used for hyperparameter tuning are: Regularization Strength (C) with range 0.0 to 1.0 -- Inverse of regularization strength. Smaller values cause stronger regularization and Max Iterations (max_iter) with values 50, 100, 150, 200 and 250 -- Maximum number of iterations to converge.
 
 ```
 early_termination_policy = BanditPolicy(evaluation_interval=2, slack_factor=0.1)
@@ -114,7 +118,7 @@ Hyperparameter tuning is the process of finding the configuration of hyperparame
 
 ### Results
 
-The results I got with this hyperdrive model is an accuracy of ~0.7833. The parameters of the model are Regularization Strenght and Max Iterations. The results of the parameters were Regularization Strenght ~0.74, Max Iterations = 150. To improved it we can also try increasing the range of the hyperparameters and with imbalanced data  we can do better pre-processing of the data or get more data to balance it.
+The results I got with this hyperdrive model is an accuracy of ~0.7833. The parameters of the model are Regularization Strenght and Max Iterations. The results of the parameters were Regularization Strenght ~0.74, Max Iterations = 150. To improve it we can also try increasing the range of the hyperparameters and with imbalanced data we can do better pre-processing of the data or get more data to balance it.
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_RunDetails_Widget.jpg)
 
@@ -125,13 +129,23 @@ The results I got with this hyperdrive model is an accuracy of ~0.7833. The para
 ## Model Deployment
 
 The AutoMl model is deployed using Azure Container Instance as a WebService. Best run environment and score.py file is provided to the InferenceConfig. The aci service is then created using workspace, aci service name, model, inference config and deployment configuration.
-The model is successfully deployed as a web service and a REST endpoint is created with status Healthy. A scoring uri is also generated to test the endpoint.
-The endpoint is tested by using an endpoint.py file which passes 2 data points as json
+
+First the model is registered. A registered model is a logical container for one or more files that make up your model. After the registration, it can be downloaded or deployed and receive all the files that were registered. Then we need to define an inference configuration. An inference configuration describes how to set up the web-service containing your model. It's used later, when you deploy the model. Before deploying your model, you must define the deployment configuration. For this model deployment Azure Container Instances is the instance associated with my workspace. Then the model is deployed.
+
+The model is successfully deployed as a web service and a REST endpoint is created with status Healthy - The service is healthy and the endpoint is available. A scoring uri is also generated to test the endpoint.
+
+After deployment of the machine learning model as a web-service, the web-service-endpoint is queried by sending the request to it.
+The endpoint is tested by using an endpoint.py file which passes 2 data points as json. Steps for querying the endpoint: Require scoring uri, json data and primary key.
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model%20Deployment_1.jpg)
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model-Deployment_2.jpg)
 
+Logistic Regression is a binary classification algorithm(0 or 1). It uses logistic function called the sigmoid function in order to predict outcomes.
+
 ## Screen Recording
 
 A [link](https://drive.google.com/file/d/1Zv3IOT9VT0iXe_sVxZE3LYurxfddZLuA/view?usp=sharing) to a screen recording of the project in action. 
+
+##Future Improvements
+Larger dataset can be used to increase data quality, Different models can also be used with hyperparameter tuning, Feature engineering can be performed using PCA, To improve the AutoML model we can use different target metric like AUC_weighted
