@@ -136,12 +136,11 @@ The model is successfully deployed as a web service and a REST endpoint is creat
 
 After deployment of the machine learning model as a web-service, the web-service-endpoint is queried by sending the request to it.
 The endpoint is tested by using an endpoint.py file which passes 2 data points as json. Steps for querying the endpoint: Require scoring uri, json data and primary key.
+Logistic Regression is a binary classification algorithm(0 or 1). It uses logistic function called the sigmoid function in order to predict outcomes.
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model%20Deployment_1.jpg)
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model-Deployment_2.jpg)
-
-Logistic Regression is a binary classification algorithm(0 or 1). It uses logistic function called the sigmoid function in order to predict outcomes.
 
 ## Screen Recording
 
