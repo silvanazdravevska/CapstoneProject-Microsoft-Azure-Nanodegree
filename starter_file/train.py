@@ -15,9 +15,9 @@ found = False
 key = "heart-failure-clinical-records"
 description_text = "Heart Failure Dataset for Prediction of Death Events"
 
-if key in ws.datasets.keys(): 
-        found = True
-        dataset = ws.datasets[key] 
+if key in ws.datasets.keys():
+    found = True
+    dataset = ws.datasets[key] 
 
 # Split data into train and test set
 
