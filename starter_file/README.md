@@ -75,15 +75,15 @@ The main goal of classification models is to predict which categories new data w
 
 The results I got with this automated ML model is the VotingEnsemble with Accuracy of ~0.885946.Voting Ensemble technique predicts based on the weighted average of predicted class probabilities for classification tasks. `ensembled_iterations`: '[23, 17, 2, 29, 9, 5, 24, 26]', `ensembled_algorithms`: "[`LightGBM`, `ExtremeRandomTrees`, `RandomForest`, `LightGBM`, `RandomForest`, `LightGBM`, `LightGBM`, `RandomForest`]", `ensemble_weights`: '[0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.1]', `best_individual_pipeline_score`: '0.8733050847457627', `best_individual_iteration` '23'. To improve the model we can use different target metric like AUC_weighted.
 
-##AutoML RunDetails Widget
+## AutoML RunDetails Widget
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_RunDetails_Widget.jpg)
 
-##AutoML Best Model Run ID 1
+## AutoML Best Model Run ID 1
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_1.jpg)
 
-##AutoML Best Model Run ID 2
+## AutoML Best Model Run ID 2
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/AutoML_Best_Model_Run_ID_2.jpg)
 
@@ -126,15 +126,15 @@ Hyperparameter tuning is the process of finding the configuration of hyperparame
 
 The results I got with this hyperdrive model is an accuracy of ~0.7833. The parameters of the model are Regularization Strenght and Max Iterations. The results of the parameters were Regularization Strenght ~0.74, Max Iterations = 150. To improve it we can also try increasing the range of the hyperparameters and with imbalanced data we can do better pre-processing of the data or get more data to balance it.
 
-##HyperDrive RunDetails Widget
+## HyperDrive RunDetails Widget
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_RunDetails_Widget.jpg)
 
-##HyperDrive Best Model Run ID 1
+## HyperDrive Best Model Run ID 1
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_1.jpg)
 
-##HyperDrive Best Model Run ID 2
+## HyperDrive Best Model Run ID 2
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/HyperDrive_Best_Model_Run_ID_2.jpg)
 
@@ -150,11 +150,11 @@ After deployment of the machine learning model as a web-service, the web-service
 The endpoint is tested by using an endpoint.py file which passes 2 data points as json. Steps for querying the endpoint: Require scoring uri, json data and primary key.
 Logistic Regression is a binary classification algorithm(0 or 1). It uses logistic function called the sigmoid function in order to predict outcomes.
 
-##Model Deployment 1
+## Model Deployment 1
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model%20Deployment_1.jpg)
 
-##Model Deployment 2
+## Model Deployment 2
 
 ![](https://raw.githubusercontent.com/silvanazdravevska/CapstoneProject-Microsoft-Azure-Nanodegree/main/starter_file/Screenshots/Model-Deployment_2.jpg)
 
@@ -162,5 +162,5 @@ Logistic Regression is a binary classification algorithm(0 or 1). It uses logist
 
 A [link](https://drive.google.com/file/d/1Zv3IOT9VT0iXe_sVxZE3LYurxfddZLuA/view?usp=sharing) to a screen recording of the project in action. 
 
-##Future Improvements
+## Future Improvements
 Larger dataset can be used to increase data quality, Different models can also be used with hyperparameter tuning, Feature engineering can be performed using PCA, To improve the AutoML model we can use different target metric like AUC_weighted
